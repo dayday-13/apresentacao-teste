@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apresentação</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: url('Colégio-Unidade-Polo-.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      padding: 30px 20px;
+      position: relative;
+      isolation: isolate;
+    }
+
+    /* Camada escura para destacar o conteúdo */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(12, 15, 35, 0.82),
+          rgba(36, 24, 65, 0.62),
+          rgba(8, 20, 40, 0.82)
+        );
+      z-index: -1;
+    }
+
+    /* Tela inicial */
+    .container {
+      width: 100%;
+      max-width: 650px;
+      padding: 55px 35px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.09);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.30);
+      animation: fadeIn 1.2s ease both;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3.5rem);
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 15px;
+      text-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    #welcome h1 {
+      background: linear-gradient(135deg, #ffffff, #f3c7ff, #b9d4ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 15px 42px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50px;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #29203c;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 154, 158, 0.22);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        filter 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(255, 154, 158, 0.35);
+      filter: brightness(1.06);
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    button:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 5px;
+    }
+
+    /* Área de apresentação */
+    .apresentacao {
+      display: none;
+      width: 100%;
+      max-width: 760px;
+      padding: 45px 35px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.30);
+      animation: slideUp 0.8s ease both;
+    }
+
+    .apresentacao h1 {
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #ffffff, #f2c6ff, #b9d4ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .apresentacao > p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    /* Botões dos links */
+    .links {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .links button {
+      margin-top: 0;
+      min-width: 165px;
+      padding: 14px 28px;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+      box-shadow: 0 8px 24px rgba(65, 65, 220, 0.25);
+    }
+
+    .links button:hover {
+      background: linear-gradient(135deg, #fff, #e9eaff);
+      color: #4b35b5;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Cartão Sobre mim */
+    .sobre-mim {
+      display: none;
+      margin: 28px auto 0;
+      padding: 24px;
+      max-width: 600px;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: rgba(255, 255, 255, 0.94);
+      text-align: left;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      animation: slideUp 0.45s ease both;
+    }
+
+    .sobre-mim p::first-letter {
+      color: #f6b9ff;
+      font-size: 1.3em;
+      font-weight: 700;
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.025);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(35px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Adaptação para celulares */
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 14px;
+        background-attachment: scroll;
+      }
+
+      .container,
+      .apresentacao {
+        padding: 35px 22px;
+        border-radius: 22px;
+      }
+
+      h1 {
+        letter-spacing: -0.8px;
+      }
+
+      .apresentacao > p {
+        font-size: 0.95rem;
+      }
+
+      .links {
+        flex-direction: column;
+        gap: 13px;
+      }
+
+      .links button {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .sobre-mim {
+        padding: 18px;
+        font-size: 0.92rem;
+        line-height: 1.8;
+      }
+
+      button {
+        max-width: 100%;
+      }
+    }
+
+    /* Respeita a preferência por menos animações */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="welcome">
+    <h1>Bem-vindo!</h1>
+    <button onclick="entrar()">Entrar</button>
+  </div>
+
+  <div class="apresentacao" id="apresentacao">
+    <h1> Bem vindo!</h1>
+    <p>Aqui você encontra meus links e contatos!</p>
+
+    <div class="links">
+      <button onclick="window.open('https://www.linkedin.com/in/dayellenn-fernanda-82a08830a', '_blank')">LinkedIn</button>
+      <button onclick="window.open('https://dayday-13.github.io/portifolio-/index.html')">portifolio</button>
+    </div>
+
+    <button onclick="mostrarSobre()">Sobre mim</button>
+
+    <div class="sobre-mim" id="sobre">
+      <p>Olá visitante! Meu nome é Dayellenn Fernanda. Sou estudante no Colégio Unidade Polo e aqui compartilho meus projetos, portfólio e formas de contato. Seja bem-vindo(a)!</p>
+    </div>
+  </div>
+
+  <script>
+    function entrar() {
+      document.getElementById('welcome').style.display = 'none';
+      document.getElementById('apresentacao').style.display = 'block';
+    }
+
+    function mostrarSobre() {
+      const sobre = document.getElementById('sobre');
+      sobre.style.display = (sobre.style.display === 'none' || sobre.style.display === '') ? 'block' : 'none';
+    }
+
+    function irParaPortfolio() {
+      window.location.href = "file:///C:/terceirao%202026/back%20end/INDEX.HTML";
+    }
+  </script>
+</body>
+</html>
